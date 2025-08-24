@@ -1,66 +1,117 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Services from "./pages/Services";
-import AboutUs from "./pages/about/AboutUs";
-import Contact from "./pages/Contact";
-import Industry from "./pages/Industry";
-import Home from "./pages/home/Home";
-import Root from "./Root";
-import Advisory from "./pages/servicesPages/Advisory";
-import Legal from "./pages/servicesPages/Legal";
-import NFRS from "./pages/servicesPages/NFRS";
-import AduitAssurance from "./pages/servicesPages/Aduit&Assurance";
-import MeetOurFounder from "./pages/about/MeetOurFounder";
-import Tax from "./pages/servicesPages/Tax";
+import { Suspense, lazy } from "react";
+
+// Lazy load pages
+const Services = lazy(() => import("./pages/Services"));
+const AboutUs = lazy(() => import("./pages/about/AboutUs"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Industry = lazy(() => import("./pages/Industry"));
+const Home = lazy(() => import("./pages/home/Home"));
+const Root = lazy(() => import("./Root"));
+const Advisory = lazy(() => import("./pages/servicesPages/Advisory"));
+const Legal = lazy(() => import("./pages/servicesPages/Legal"));
+const NFRS = lazy(() => import("./pages/servicesPages/NFRS"));
+const AduitAssurance = lazy(() => import("./pages/servicesPages/Aduit&Assurance"));
+const MeetOurFounder = lazy(() => import("./pages/about/MeetOurFounder"));
+const Tax = lazy(() => import("./pages/servicesPages/Tax"));
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root />,
+      element: (
+        <Suspense fallback={<div>Loading...</div>}>
+          <Root />
+        </Suspense>
+      ),
       children: [
         {
           index: true,
-          element: <Home />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home />
+            </Suspense>
+          ),
         },
         {
           path: "services",
-          element: <Services />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Services />
+            </Suspense>
+          ),
         },
         {
           path: "about/aboutus",
-          element: <AboutUs />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <AboutUs />
+            </Suspense>
+          ),
         },
         {
           path: "contact",
-          element: <Contact />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Contact />
+            </Suspense>
+          ),
         },
         {
           path: "industry",
-          element: <Industry />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Industry />
+            </Suspense>
+          ),
         },
         {
           path: "services/advisory",
-          element: <Advisory />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Advisory />
+            </Suspense>
+          ),
         },
         {
           path: "services/legal",
-          element: <Legal />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Legal />
+            </Suspense>
+          ),
         },
-          {
+        {
           path: "services/tax",
-          element: <Tax />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <Tax />
+            </Suspense>
+          ),
         },
         {
           path: "services/NFRS",
-          element: <NFRS />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <NFRS />
+            </Suspense>
+          ),
         },
         {
           path: "services/audit & assurance",
-          element: <AduitAssurance />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <AduitAssurance />
+            </Suspense>
+          ),
         },
-         {
+        {
           path: "about/meetourfounder",
-          element: <MeetOurFounder />,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <MeetOurFounder />
+            </Suspense>
+          ),
         },
       ],
     },
